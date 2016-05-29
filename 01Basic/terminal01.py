@@ -12,5 +12,5 @@ print ("\t**        Salam - Halo!       **")
 print ("\t********************************")
 
 for x in range(0,10):
-    print ("\nKita telah bersenang2 bersama %d kali" % x)
+    print ("Kita telah bersenang2 bersama %d kali" % x)
     

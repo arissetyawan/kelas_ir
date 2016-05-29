@@ -14,7 +14,7 @@ def display_bar_title():
     print ("\t********************************")
     print ("\t**   Simple Search Engine     **")
     print ("\t********************************")
-    
+
 def get_user_input():
     print ("\n")
     print ("[1] Tambahkan konten/dokumen")
@@ -27,13 +27,13 @@ def get_user_input():
     print ("[q] Keluar.")
 
     return raw_input("\nMasukkan pilihanmu: ")
-    
+
 def print_uc():
     print ("\nMaaf belum dibuat. Tugas kalian membuatnya")
 
 def print_separator():
     print ("-----------------------------------------------")
-        
+
 def se_add_doc():
     print ("\nMasukkan konten dokumen, akhiri dengan ENTER.")
     print_separator()
@@ -51,50 +51,32 @@ def se_list_docs():
     print_separator()
     print ("index\tkonten")
     print_separator()
-    for i, d in enumerate(docs):
-        print ("%d\t%s" % (i, d) )
+    for index, data in enumerate(docs):
+        print ("%d\t%s" % (index, data) )
     print_separator()
-    
+
 def se_show_doc():
     i_max = len(docs) - 1
     i = raw_input("Masukkan nomor index dokumen [0-%d]: " % i_max)
     print_separator()
     print (docs[ int(i) ])
     print_separator()
-    
-def se_loaddb(datafile):
-    try:
-        file_object = open(datafile, 'rb')
-        data = pickle.load(file_object)
-        file_object.close()
-    except:
-        data = []
-        
-    return data
-        
-def se_savedb(data):
-    try:
-        file_object = open(datafile, 'wb')
-        pickle.dump(data, file_object)
-        file_object.close()
-    except Exception as e:
-        print(e)
-        print("\nMaaf gagal simpan data dokumen. Sorry.")   
+
 
 ### MAIN PROGRAM ###
 
 datafile = 'searchengine.pydata'
-docs = se_loaddb(datafile)
+docs = []
 
 pilihan = ""
 display_bar_title()
 
 while pilihan != "q":
-    
+
     # Beri pengguna kesempatan memilih perintah
     pilihan = get_user_input()
-    
-    # Respon 
+
+    # Respon
     display_bar_title()
     if str(pilihan) == "1":
         se_add_doc()
@@ -109,15 +91,9 @@ while pilihan != "q":
     elif str(pilihan) == "6":
         print_uc()
     elif pilihan == "b":
-        se_savedb(docs)
+        print_uc()
     elif pilihan == "q":
-        simpan = raw_input("\nSimpan data sebelum kelular [Y/n]: ")
-        if (simpan == "n"):
-            print (".")
-        else:
-            se_savedb(docs)
-            
         print ("\nOkeh terima kasih. Sampai jumpa.")
     else:
-        print ("\nAku gak ngerti kamu")        
-        
+        print ("\nAku gak ngerti kamu")
+
